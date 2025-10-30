@@ -1,4 +1,4 @@
-// src/controllers/llmControllers.js
+
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const getLLMSummary = async (req, res) => {
