@@ -19,6 +19,10 @@ app.use(express.json());
 
 
 // ROUTES /api/summary
+app.get("/", (req, res) => {
+  res.send("Backend running — Earthquake Visualizer API active.");
+});
+
 app.use('/api/summary', llmRoutes);
 
 module.exports = app;
