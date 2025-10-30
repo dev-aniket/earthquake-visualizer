@@ -15,7 +15,7 @@ const getLLMSummary = async (req, res) => {
       Depth: ${depth} km
       Time: ${timeIso}
 
-      Write 2-3 short sentences suitable for a public earthquake report.
+      Write 5-6 short sentences suitable for a public earthquake report.
     `;
 
     const result = await model.generateContent(prompt);
