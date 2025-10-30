@@ -9,14 +9,21 @@ const getLLMSummary = async (req, res) => {
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const prompt = `
-      Generate a brief, factual summary for an earthquake event:
-      Location: ${place}
-      Magnitude: ${magnitude}
-      Depth: ${depth} km
-      Time: ${timeIso}
+           You are an AI seismology reporter. Write a concise, factual summary (max 6 short sentences)
+            about an earthquake using the given data.
 
-      Write 5-6 short sentences suitable for a public earthquake report.
-    `;
+            Data:
+            - Location: ${place}
+            - Magnitude: ${magnitude}
+            - Depth: ${depth} km
+            - Time (UTC): ${timeIso}
+
+            Guidelines:
+            - Focus only on factual impact and characteristics.
+            - Avoid speculation, emojis, or markdown.
+            - Tone: professional, neutral, report-style.
+            `;
+
 
     const result = await model.generateContent(prompt);
     const text = result.response.candidates?.[0]?.content?.parts?.[0]?.text || "No summary available.";
